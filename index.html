@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PuroEGO &middot; Evoluci&oacute;n Estrat&eacute;gica Mayo&ndash;Agosto 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --ink:#0f1117;--ink2:#2d3748;--ink3:#4a5568;--ink4:#718096;
+  --rule:#e2e8f0;--rule2:#f7f8fa;
+  --teal:#0891b2;--teal-l:#e0f7fc;--teal-m:#b3eaf5;
+  --red:#e53e3e;--red-l:#fff5f5;
+  --orange:#dd6b20;--orange-l:#fffaf0;
+  --green:#276749;--green-l:#f0fff4;
+  --purple:#6b46c1;--purple-l:#faf5ff;
+  --amber:#b45309;--amber-l:#fffbeb;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#e8edf2;color:var(--ink);min-height:100vh;display:flex;flex-direction:column;align-items:center}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--ink);height:50px;display:flex;align-items:center;justify-content:space-between;padding:0 28px}
+.nav-brand{font-family:'Playfair Display',serif;font-size:14px;color:#fff;letter-spacing:.04em}
+.nav-brand span{color:var(--teal)}
+.nav-right{display:flex;align-items:center;gap:14px}
+.nav-dots{display:flex;gap:5px}
+.ndot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18);cursor:pointer;transition:all .2s}
+.ndot.on{background:var(--teal);transform:scale(1.35)}
+.nav-ctrls{display:flex;align-items:center;gap:6px}
+.nbtn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff;width:30px;height:30px;border-radius:6px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.nbtn:hover{background:rgba(255,255,255,.18)}
+.nctr{font-size:11px;color:rgba(255,255,255,.4);min-width:46px;text-align:center;font-family:'DM Mono',monospace}
+.stage{margin-top:50px;width:100%;display:flex;flex-direction:column;align-items:center;padding:28px 16px 44px;min-height:calc(100vh - 50px);justify-content:center}
+.slide{display:none;width:1100px;background:#fff;border-radius:14px;box-shadow:0 4px 6px -1px rgba(0,0,0,.08),0 20px 60px -10px rgba(0,0,0,.14);overflow:hidden;animation:si .3s cubic-bezier(.4,0,.2,1)}
+.slide.on{display:flex;flex-direction:column}
+@keyframes si{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.sh{padding:24px 44px 0;display:flex;align-items:flex-start;gap:12px}
+.sdot{width:26px;height:26px;background:var(--teal);border-radius:50%;flex-shrink:0;margin-top:3px}
+.stitle{font-family:'Playfair Display',serif;font-size:23px;font-weight:700;color:var(--ink);line-height:1.2}
+.stitle em{color:var(--teal);font-style:normal}
+.srule{height:1px;background:var(--rule);margin:13px 44px 0}
+.sbody{padding:16px 44px 24px;flex:1;display:flex;flex-direction:column;gap:12px}
+.sfooter{padding:9px 44px;border-top:1px solid var(--rule);background:var(--rule2);display:flex;justify-content:space-between;align-items:center}
+.sfnote{font-size:10px;color:var(--ink4);font-style:italic}
+.sfnum{font-family:'DM Mono',monospace;font-size:10px;color:var(--ink4)}
+.cover{background:var(--ink);min-height:560px;position:relative}
+.cover-bar{position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--teal)}
+.cover-inner{padding:48px 60px;display:flex;flex-direction:column;height:100%}
+.ctag{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);font-weight:500;margin-bottom:14px}
+.ctag span{color:rgba(255,255,255,.25);margin:0 8px}
+.ct1{font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:#fff;line-height:1.08;margin-bottom:5px}
+.ct2{font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--teal);line-height:1.08;margin-bottom:14px}
+.csub{font-size:12px;color:rgba(255,255,255,.35);font-weight:300;margin-bottom:16px}
+.crule{height:1px;background:rgba(255,255,255,.1);margin-bottom:16px}
+.ck-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.ck{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:12px 14px}
+.ck.pos{border-color:rgba(104,211,145,.25);background:rgba(104,211,145,.06)}
+.ck.neg{border-color:rgba(252,129,129,.25);background:rgba(252,129,129,.06)}
+.ck.warn{border-color:rgba(246,173,85,.25);background:rgba(246,173,85,.05)}
+.ck.neutral{border-color:rgba(8,145,178,.25);background:rgba(8,145,178,.05)}
+.ck-lbl{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:5px;line-height:1.3}
+.ck-val{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;margin-bottom:3px}
+.ck-desc{font-size:9.5px;color:rgba(255,255,255,.42);line-height:1.5}
+.vr{color:#fc8181}.vg{color:#68d391}.vo{color:#f6ad55}.vt{color:#63b3ed}
+.ctx-banner{background:rgba(8,145,178,.10);border:1px solid rgba(8,145,178,.3);border-left:4px solid var(--teal);border-radius:0 8px 8px 0;padding:11px 16px;margin-bottom:14px}
+.ctx-banner-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--teal);margin-bottom:3px}
+.ctx-banner-txt{font-size:12.5px;color:rgba(255,255,255,.80);line-height:1.5}
+.ctx-banner-txt strong{color:#fff}
+.cols2{display:grid;grid-template-columns:1fr 1.4fr;gap:20px;flex:1}
+.cols2e{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1}
+.col{display:flex;flex-direction:column;gap:10px}
+.ib{border-radius:0 7px 7px 0;padding:10px 13px}
+.ib.teal{background:var(--teal-l);border-left:3px solid var(--teal)}
+.ib.red{background:var(--red-l);border-left:3px solid var(--red)}
+.ib.orange{background:var(--orange-l);border-left:3px solid var(--orange)}
+.ib.green{background:var(--green-l);border-left:3px solid var(--green)}
+.ib.amber{background:var(--amber-l);border-left:3px solid var(--amber)}
+.iblabel{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:3px}
+.iblabel.teal{color:var(--teal)}.iblabel.red{color:var(--red)}.iblabel.orange{color:var(--orange)}
+.iblabel.green{color:var(--green)}.iblabel.amber{color:var(--amber)}
+.ibtext{font-size:11px;color:var(--ink2);line-height:1.55}
+.ibtext strong{color:var(--ink)}
+.cw{background:var(--rule2);border:1px solid var(--rule);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:5px}
+.ct2t{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ink4)}
+.cwrap{position:relative}
+.diag{background:var(--ink);border-radius:8px;padding:10px 16px;display:flex;gap:10px;align-items:flex-start}
+.dlabel{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--teal);flex-shrink:0;margin-top:1px;white-space:nowrap}
+.dtext{font-size:11px;color:rgba(255,255,255,.82);line-height:1.5}
+.kpi-table{width:100%;border-collapse:collapse;font-size:11.5px}
+.kpi-table th{font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink4);padding:5px 10px;text-align:right;border-bottom:2px solid var(--rule)}
+.kpi-table th:first-child{text-align:left;padding-left:0}
+.kpi-table td{padding:6px 10px;text-align:right;border-bottom:1px solid var(--rule);color:var(--ink2)}
+.kpi-table td:first-child{text-align:left;font-weight:600;color:var(--ink);font-size:11px;padding-left:0}
+.kpi-table tr:last-child td{border-bottom:none}
+.kpi-table tr.hl-g td{color:var(--green);font-weight:700}
+.kpi-table tr.hl-r td{background:#fff5f5}
+.dn{color:var(--red);font-weight:700}
+.dw{color:var(--orange);font-weight:700}
+.dp{color:var(--green);font-weight:700}
+.mbadge{display:inline-flex;align-items:center;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;text-transform:uppercase;letter-spacing:.06em}
+.mbadge.may{background:#e0f7fc;color:#065f72}
+.mbadge.jun{background:#faf5ff;color:#44337a}
+.mbadge.jul{background:#f0fff4;color:#22543d}
+.mbadge.ago{background:#fff5f5;color:#742a2a}
+.ctx-pill{display:inline-flex;font-size:9px;font-weight:600;background:#fffbeb;color:#b45309;border:1px solid #fde68a;border-radius:20px;padding:1px 8px;margin-left:3px}
+.meta-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-bottom:10px}
+.mscard{background:var(--rule2);border:1px solid var(--rule);border-radius:7px;padding:9px 6px;text-align:center}
+.mscard-val{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;margin-bottom:2px}
+.mscard-lab{font-size:7px;color:var(--ink4);text-transform:uppercase;letter-spacing:.05em;line-height:1.2}
+.mscard-cmp{font-size:9px;font-weight:700;margin-top:2px}
+.slide-legend{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--ink3);font-weight:500}
+.leg-dot{width:10px;height:10px;border-radius:3px}
+.leg-note{font-size:9px;color:var(--ink4);font-style:italic;margin-left:4px}
+.verdict{background:var(--ink);border-radius:8px;padding:10px 16px;display:flex;gap:10px;align-items:flex-start}
+.verdict-pill{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--teal);background:rgba(8,145,178,.12);border:1px solid rgba(8,145,178,.3);border-radius:20px;padding:2px 10px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.verdict-txt{font-size:11px;color:rgba(255,255,255,.82);line-height:1.5}
+.alert-box{background:#fff5f5;border:1px solid #feb2b2;border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:11px 15px}
+.alert-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--red);margin-bottom:3px}
+.alert-txt{font-size:11px;color:#742a2a;line-height:1.55}
+.alert-txt strong{color:#63171b}
+.keyhint{margin-top:12px;font-size:11px;color:#9ca3af;display:flex;gap:12px;align-items:center}
+.key{display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid #d1d5db;border-radius:4px;padding:1px 6px;font-family:'DM Mono',monospace;font-size:11px;color:#374151;box-shadow:0 1px 0 #d1d5db}
+.footnote{font-size:9px;color:var(--ink4);font-style:italic;margin-top:4px}
+@media(max-width:1150px){.slide{width:96vw}}
+@media print {
+  @page { size: landscape; margin: 0; }
+  body, .stage { background: #e8edf2; margin: 0; padding: 0; min-height: 0; display: block; }
+  .nav, .keyhint { display: none !important; }
+  .slide { display: flex !important; width: 100vw !important; height: 100vh !important; box-shadow: none; border-radius: 0; margin: 0; page-break-after: always; break-after: page; animation: none !important; }
+  .slide:last-child { page-break-after: auto; break-after: auto; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand"><span>Puro</span>EGO &middot; Evoluci&oacute;n Mayo&ndash;Agosto 2026</div>
+  <div class="nav-right">
+    <div class="nav-dots" id="dots"></div>
+    <div class="nav-ctrls">
+      <button class="nbtn" onclick="go(cur-1)">&#8249;</button>
+      <div class="nctr" id="ctr">1 / 8</div>
+      <button class="nbtn" onclick="go(cur+1)">&#8250;</button>
+    </div>
+  </div>
+</nav>
+
+<div class="stage">
+
+<!-- S1 PORTADA -->
+<div class="slide on" id="s1">
+  <div class="cover">
+    <div class="cover-bar"></div>
+    <div class="cover-inner">
+      <div class="ctag"><span style="text-transform:none;color:rgba(255,255,255,.6)">PuroEGO</span><span>&middot;</span>EVOLUCI&Oacute;N ESTRAT&Eacute;GICA<span>&middot;</span>MAYO &ndash; AGOSTO 2026</div>
+      <div class="ct1">Verano 2026:</div>
+      <div class="ct2">&iquest;Qu&eacute; dicen los n&uacute;meros reales?</div>
+      <div class="csub">Per&iacute;odo de rebajas y vacaciones &middot; GA4 + Shopify Analytics + Meta Business Suite</div>
+      <div class="ctx-banner">
+        <div class="ctx-banner-lbl">Contexto del per&iacute;odo</div>
+        <div class="ctx-banner-txt">Finales de junio, julio y agosto = <strong>rebajas + vacaciones</strong>. La ca&iacute;da de ticket medio y tr&aacute;fico es estructural y estacional. La se&ntilde;al de alarma real en julio no fue la ca&iacute;da de ventas sino el <strong>disparo de devoluciones al 41%</strong>, muy por encima de la media del a&ntilde;o.</div>
+      </div>
+      <div class="crule"></div>
+      <div class="ck-row">
+        <div class="ck warn">
+          <div class="ck-lbl">Mayo 2026</div>
+          <div class="ck-val vo">108.882 &euro;</div>
+          <div class="ck-desc">754 pedidos &middot; CVR 0,77%<br>TM 144,40 &euro; &middot; ROAS 5,04x<br>Dev. 29,5%</div>
+        </div>
+        <div class="ck neutral">
+          <div class="ck-lbl">Junio 2026 &mdash; Inicio rebajas</div>
+          <div class="ck-val vt">104.195 &euro;</div>
+          <div class="ck-desc">872 pedidos &middot; CVR 1,12%<br>TM 119,49 &euro; &middot; ROAS 5,76x<br>Dev. 27,1%</div>
+        </div>
+        <div class="ck neg">
+          <div class="ck-lbl">Julio 2026 &mdash; Rebajas + Dev.</div>
+          <div class="ck-val vr">61.512 &euro;</div>
+          <div class="ck-desc">665 pedidos &middot; CVR 1,02%<br>TM 92,50 &euro; &middot; ROAS 3,92x<br><strong style="color:#fc8181">Dev. 40,9%</strong></div>
+        </div>
+        <div class="ck neg">
+          <div class="ck-lbl">Agosto 2026 &mdash; Vacaciones</div>
+          <div class="ck-val vr">35.156 &euro;</div>
+          <div class="ck-desc">401 pedidos &middot; CVR 0,70%<br>TM 87,67 &euro; &middot; ROAS 2,89x<br>Dev. 22,2%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S2 EVOLUCION MENSUAL -->
+<div class="slide" id="s2">
+  <div class="sh"><div class="sdot"></div><div class="stitle">1. Evoluci&oacute;n Mayo&ndash;Agosto <em>M&eacute;tricas completas</em></div></div>
+  <div class="srule"></div>
+  <div class="sbody">
+    <div class="alert-box">
+      <div class="alert-lbl">Anomal&iacute;a clave: devoluciones julio</div>
+      <div class="alert-txt">Julio cerr&oacute; con un <strong>40,9% de tasa de devoluci&oacute;n</strong> (25.171 &euro; devueltos sobre 61.512 &euro; vendidos). Es el dato m&aacute;s alto del a&ntilde;o y 14 puntos por encima de la media. En agosto bajan al 22,2%, volviendo a niveles normales. Causa m&aacute;s probable: compras de rebajas por impulso que no cumplen expectativas de talla o tejido.</div>
+    </div>
+    <table class="kpi-table">
+      <thead>
+        <tr>
+          <th>M&eacute;trica</th>
+          <th><span class="mbadge may">Mayo</span></th>
+          <th><span class="mbadge jun">Junio</span><span class="ctx-pill">Rebajas</span></th>
+          <th><span class="mbadge jul">Julio</span><span class="ctx-pill">Rebajas</span></th>
+          <th><span class="mbadge ago">Agosto</span><span class="ctx-pill">Vacac.</span></th>
+          <th>May&rarr;Jun</th>
+          <th>Jun&rarr;Jul</th>
+          <th>Jul&rarr;Ago</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Inversi&oacute;n Publicitaria</td><td>21.604 &euro;</td><td>18.089 &euro;</td><td>15.676 &euro;</td><td>12.184 &euro;</td><td class="dp">&minus;16,3%</td><td class="dp">&minus;13,3%</td><td class="dp">&minus;22,3%</td></tr>
+        <tr><td>Sesiones GA4</td><td>98.484</td><td>77.707</td><td>65.384</td><td>57.553</td><td class="dn">&minus;21,1%</td><td class="dn">&minus;15,9%</td><td class="dn">&minus;12,0%</td></tr>
+        <tr><td>Transacciones</td><td>754</td><td>872</td><td>665</td><td>401</td><td class="dp">+15,6%</td><td class="dn">&minus;23,7%</td><td class="dn">&minus;39,7%</td></tr>
+        <tr><td>CVR (sesi&oacute;n &rarr; compra)</td><td>0,77%</td><td>1,12%</td><td>1,02%</td><td>0,70%</td><td class="dp">+45,5%</td><td class="dn">&minus;8,9%</td><td class="dn">&minus;31,4%</td></tr>
+        <tr class="hl-g"><td>Ventas Netas (Shopify)</td><td>108.882 &euro;</td><td>104.195 &euro;</td><td>61.512 &euro;</td><td>35.156 &euro;</td><td class="dn">&minus;4,3%</td><td class="dn">&minus;40,9%</td><td class="dn">&minus;42,8%</td></tr>
+        <tr><td>ROAS</td><td>5,04x</td><td>5,76x</td><td>3,92x</td><td>2,89x</td><td class="dp">+14,3%</td><td class="dn">&minus;32,0%</td><td class="dn">&minus;26,3%</td></tr>
+        <tr><td>Ticket Medio</td><td>144,40 &euro;</td><td>119,49 &euro;</td><td>92,50 &euro;</td><td>87,67 &euro;</td><td class="dn">&minus;17,2%</td><td class="dn">&minus;22,6%</td><td class="dn">&minus;5,2%</td></tr>
+        <tr class="hl-r"><td>Devoluciones</td><td>&minus;32.150 &euro;</td><td>&minus;28.276 &euro;</td><td>&minus;25.171 &euro;</td><td>&minus;7.787 &euro;</td><td></td><td></td><td></td></tr>
+        <tr class="hl-r"><td>% Devoluciones</td><td>29,5%</td><td>27,1%</td><td class="dn">40,9%</td><td>22,2%</td><td></td><td class="dn">+13,8 pp</td><td class="dp">&minus;18,7 pp</td></tr>
+        <tr><td>CPA</td><td>28,65 &euro;</td><td>20,74 &euro;</td><td>23,57 &euro;</td><td>30,38 &euro;</td><td class="dp">&minus;27,6%</td><td class="dw">+13,7%</td><td class="dn">+28,9%</td></tr>
+      </tbody>
+    </table>
+    <div class="verdict">
+      <div class="verdict-pill">Lectura ejecutiva</div>
+      <div class="verdict-txt">La ca&iacute;da de ventas de julio no se explica solo por las rebajas. Las devoluciones al 41% son la variable diferencial. En agosto, con menos inversi&oacute;n y en vacaciones, las devoluciones se normalizan. <strong style="color:#fff">El negocio m&aacute;s sano de agosto vs julio: menos volumen, pero menos fricci&oacute;n post-venta.</strong></div>
+    </div>
+  </div>
+  <div class="sfooter"><div class="sfnote">Fuente: Shopify Analytics. Todos los datos confirmados. CPA = Inversi&oacute;n / Transacciones.</div><div class="sfnum">02 / 08</div></div>
+</div>
+
+<!-- S3 EVOLUCION AÃ‘O -->
+<div class="slide" id="s3">
+  <div class="sh"><div class="sdot"></div><div class="stitle">2. Visi&oacute;n del A&ntilde;o <em>Curva Mayo&ndash;Agosto 2026</em></div></div>
+  <div class="srule"></div>
+  <div class="sbody">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1">
+      <div class="cw">
+        <div class="ct2t">Ventas netas vs Inversi&oacute;n (&euro;)</div>
+        <div class="cwrap" style="height:220px"><canvas id="cVentasInv"></canvas></div>
+      </div>
+      <div class="cw">
+        <div class="ct2t">Sesiones vs Transacciones</div>
+        <div class="cwrap" style="height:220px"><canvas id="cSessTrans"></canvas></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+      <div class="cw">
+        <div class="ct2t">Ticket Medio (&euro;)</div>
+        <div class="cwrap" style="height:140px"><canvas id="cTM"></canvas></div>
+      </div>
+      <div class="cw">
+        <div class="ct2t">ROAS</div>
+        <div class="cwrap" style="height:140px"><canvas id="cROAS"></canvas></div>
+      </div>
+      <div class="cw">
+        <div class="ct2t">CVR (%)</div>
+        <div class="cwrap" style="height:140px"><canvas id="cCVR"></canvas></div>
+      </div>
+      <div class="cw">
+        <div class="ct2t">% Devoluciones</div>
+        <div class="cwrap" style="height:140px"><canvas id="cDev"></canvas></div>
+      </div>
+    </div>
+  </div>
+  <div class="sfooter"><div class="sfnote">Fuente: Shopify Analytics. Datos 100% reales, sin estimaciones.</div><div class="sfnum">03 / 08</div></div>
+</div>
+
+<!-- S4 TRAFICO POR CANAL -->
+<div class="slide" id="s4">
+  <div class="sh"><div class="sdot"></div><div class="stitle">3. Tr&aacute;fico por Canal <em>Julio vs Agosto (GA4)</em></div></div>
+  <div class="srule"></div>
+  <div class="sbody">
+    <div class="slide-legend">
+      <div class="leg-item"><span class="leg-dot" style="background:rgba(39,103,73,.85)"></span>Julio (65.384 ses.)</div>
+      <div class="leg-item"><span class="leg-dot" style="background:rgba(229,62,62,.85)"></span>Agosto (57.553 ses.)</div>
+      <span class="leg-note">Google CPC incluye Performance Max (Cross-network)</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:18px;flex:1">
+      <div class="col">
+        <table class="kpi-table">
+          <thead><tr><th style="text-align:left">Canal</th><th>Jul</th><th>Ago</th><th>Delta</th></tr></thead>
+          <tbody>
+            <tr><td>Google (CPC + PMax)</td><td>22.933</td><td>20.231</td><td class="dn">&minus;11,8%</td></tr>
+            <tr><td>Directo</td><td>10.218</td><td>12.139</td><td class="dp">+18,8%</td></tr>
+            <tr><td>B&uacute;squeda Org&aacute;nica</td><td>8.374</td><td>6.979</td><td class="dn">&minus;16,7%</td></tr>
+            <tr><td>Paid Social (Meta Ads)</td><td>7.481</td><td>12.679</td><td class="dp">+69,5%</td></tr>
+            <tr><td>Social Org&aacute;nico</td><td>10.754</td><td>1.855</td><td class="dn">&minus;82,7%</td></tr>
+            <tr><td>Email (Connectif)</td><td>2.708</td><td>2.796</td><td class="dp">+3,2%</td></tr>
+            <tr><td>AI Assistant</td><td>202</td><td>286</td><td class="dp">+41,6%</td></tr>
+          </tbody>
+        </table>
+        <div class="ib orange">
+          <div class="iblabel orange">Social org&aacute;nico: ca&iacute;da del 83%</div>
+          <div class="ibtext">En julio el social org&aacute;nico tra&iacute;a 10.754 ses. por efecto viral de las rebajas. Sin ese impulso, la base org&aacute;nica real de agosto es 1.855 ses. Esa es la cifra estructural del canal.</div>
+        </div>
+        <div class="ib teal">
+          <div class="iblabel teal">AI Assistant: canal emergente</div>
+          <div class="ibtext">Ya genera 202&ndash;286 ses./mes. Se&ntilde;al temprana a monitorizar: la IA empieza a derivar tr&aacute;fico de descubrimiento de marca.</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="cw" style="flex:1">
+          <div class="ct2t">Sesiones por canal &mdash; Julio vs Agosto</div>
+          <div class="cwrap" style="height:310px"><canvas id="cCanalSess"></canvas></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sfooter"><div class="sfnote">Fuente: GA4. Google CPC agrupa Paid Search + Cross-network (Performance Max). Paid Social agosto mayor por redistribuci&oacute;n interna Meta.</div><div class="sfnum">04 / 08</div></div>
+</div>
+
+<!-- S5 INGRESOS CANAL -->
+<div class="slide" id="s5">
+  <div class="sh"><div class="sdot"></div><div class="stitle">4. Ingresos por Canal <em>y Eficiencia (GA4)</em></div></div>
+  <div class="srule"></div>
+  <div class="sbody">
+    <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:18px;flex:1">
+      <div class="col">
+        <table class="kpi-table">
+          <thead><tr><th style="text-align:left">Canal</th><th>Jul &euro;</th><th>Ago &euro;</th><th>&euro;/ses. Jul</th></tr></thead>
+          <tbody>
+            <tr><td>Directo</td><td>11.982</td><td>4.181</td><td class="dp">1,17 &euro;</td></tr>
+            <tr><td>Email (Connectif)</td><td>4.259</td><td>2.865</td><td class="dp">1,57 &euro;</td></tr>
+            <tr><td>Google (CPC + PMax)</td><td>15.998</td><td>10.888</td><td>0,70 &euro;</td></tr>
+            <tr><td>B&uacute;squeda Org&aacute;nica</td><td>5.228</td><td>2.805</td><td>0,62 &euro;</td></tr>
+            <tr><td>Social Org&aacute;nico</td><td>2.309</td><td>955</td><td>0,21 &euro;</td></tr>
+            <tr><td>Paid Social (Meta)</td><td>1.843</td><td>2.765</td><td>0,25 &euro;</td></tr>
+          </tbody>
+        </table>
+        <div class="ib green">
+          <div class="iblabel green">Email: mejor rendimiento del mix</div>
+          <div class="ibtext"><strong>1,57 &euro; por sesi&oacute;n</strong> en julio. El canal de mayor retorno con el menor coste marginal. Margen claro de escalado con mayor frecuencia y segmentaci&oacute;n.</div>
+        </div>
+        <div class="ib teal">
+          <div class="iblabel teal">Directo: el cliente fiel vale m&aacute;s</div>
+          <div class="ibtext"><strong>1,17 &euro; por sesi&oacute;n</strong>. La ca&iacute;da de agosto (&minus;65% ingresos) es vacacional. Su retorno en septiembre ser&aacute; una se&ntilde;al directa de la salud de marca.</div>
+        </div>
+        <div class="ib amber">
+          <div class="iblabel amber">Paid Social: volumen sin retorno</div>
+          <div class="ibtext">Con 7.481&ndash;12.679 ses. y solo 0,25 &euro;/ses. es el canal de menor eficiencia del mix. El aumento de sesiones en agosto no se traduce en ingresos proporcionales.</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="cw" style="flex:1">
+          <div class="ct2t">Ingresos GA4 por canal (&euro;) &mdash; Julio vs Agosto</div>
+          <div class="cwrap" style="height:310px"><canvas id="cCanalRev"></canvas></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sfooter"><div class="sfnote">Fuente: GA4. Total GA4 Julio: ~40.800 &euro;. Agosto: ~24.500 &euro;. Diferencia vs Shopify por modelo de atribuci&oacute;n. Google CPC + PMax consolidados.</div><div class="sfnum">05 / 08</div></div>
+</div>
+
+<!-- S6 META -->
+<div class="slide" id="s6">
+  <div class="sh"><div class="sdot"></div><div class="stitle">5. Instagram &amp; Facebook <em>Julio vs Agosto</em></div></div>
+  <div class="srule"></div>
+  <div class="sbody">
+    <div style="font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-bottom:4px">Instagram</div>
+    <div class="meta-strip">
+      <div class="mscard">
+        <div class="mscard-lab" style="color:#e91e8c">Alcance mensual</div>
+        <div class="mscard-val" style="color:#2d3748">761k &rarr; 570k</div>
+        <div class="mscard-cmp dn">&minus;25,1%</div>
+      </div>
+      <div class="mscard">
+        <div class="mscard-lab">Interacciones</div>
+        <div class="mscard-val" style="color:#dd6b20">3.034 &rarr; 2.083</div>
+        <div class="mscard-cmp dn">&minus;31,3%</div>
+      </div>
+      <div class="mscard">
+        <div class="mscard-lab">Clics al enlace</div>
+        <div class="mscard-val" style="color:#0891b2">17.251 &rarr; 13.839</div>
+        <div class="mscard-cmp dn">&minus;19,8%</div>
+      </div>
+      <div class="mscard">
+        <div class="mscard-lab">Visitas al perfil</div>
+        <div class="mscard-val" style="color:#6b46c1">6.343 &rarr; 5.723</div>
+        <div class="mscard-cmp dn">&minus;9,8%</div>
+      </div>
+      <div class="mscard">
+        <div class="mscard-lab">Seguidores totales*</div>
+        <div class="mscard-val" style="color:#276749">~123 mil</div>
+        <div class="mscard-cmp" style="color:var(--ink4)">*desde jul&nbsp;2026</div>
+      </div>
+    </div>
+    <div style="font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-bottom:4px">Facebook</div>
+    <div class="meta-strip">
+      <div class="mscard">
+        <div class="mscard-lab" style="color:#0891b2">Clics al enlace</div>
+        <div class="mscard-val" style="color:#2d3748">13.459 &rarr; 9.016</div>
+        <div class="mscard-cmp dn">&minus;33,0%</div>
+      </div>
+      <div class="mscard">
+        <div class="mscard-lab">Interacciones</div>
+        <div class="mscard-val" style="color:#dd6b20">530 &rarr; 369</div>
+        <div class="mscard-cmp dn">&minus;30,4%</div>
+      </div>
+      <div class="mscard">
+        <div class="mscard-lab">Nuevos seguidores</div>
+        <div class="mscard-val" style="color:#276749">49 &rarr; 47</div>
+        <div class="mscard-cmp dw">&minus;4,1%</div>
+      </div>
+      <div class="mscard">
+        <div class="mscard-lab" style="color:#718096">Base FB acumulada</div>
+        <div class="mscard-val" style="color:#2d3748">~101.500</div>
+        <div class="mscard-cmp" style="color:#718096">seguidores</div>
+      </div>
+      <div class="mscard">
+        <div class="mscard-lab" style="color:#718096">Nuevos seg. IG mes</div>
+        <div class="mscard-val" style="color:#276749">1.021 &rarr; 774</div>
+        <div class="mscard-cmp dn">&minus;24,2%</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1">
+      <div class="cw">
+        <div class="ct2t">IG Alcance semanal &mdash; Julio vs Agosto</div>
+        <div class="cwrap" style="height:160px"><canvas id="cIGAlcance"></canvas></div>
+      </div>
+      <div class="cw">
+        <div class="ct2t">IG Clics al enlace semanal &mdash; Julio vs Agosto</div>
+        <div class="cwrap" style="height:160px"><canvas id="cIGClics"></canvas></div>
+      </div>
+    </div>
+    <p class="footnote">* Seguidores totales IG: ~123.900 desde julio 2026 (estable sin variaci&oacute;n significativa). Los datos de nuevos seguidores/mes provienen de Meta Business Suite y no reflejan el total acumulado.</p>
+    <div class="verdict">
+      <div class="verdict-pill">Contexto META</div>
+      <div class="verdict-txt">La ca&iacute;da de alcance e interacciones en agosto es parcialmente estacional. Lo relevante: la <strong style="color:#fff">ratio clic/alcance mejora en agosto</strong>, quien ve el contenido sigue haciendo clic. El problema no es la calidad del contenido sino el volumen de distribuci&oacute;n, que baja en per&iacute;odo vacacional.</div>
+    </div>
+  </div>
+  <div class="sfooter"><div class="sfnote">Fuente: Meta Business Suite. Nuevos seguidores = ganados en el mes. Total acumulado IG confirmado en captura del 07/09/2026.</div><div class="sfnum">06 / 08</div></div>
+</div>
+
+<!-- S7 MARCA -->
+<div class="slide" id="s7">
+  <div class="sh"><div class="sdot"></div><div class="stitle">6. Indicador de Marca <em>Búsquedas "puroego" (Google Trends)</em></div></div>
+  <div class="srule"></div>
+  <div class="sbody">
+    <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:24px;flex:1;align-items:center;">
+      <div class="col">
+        <div class="ib teal">
+          <div class="iblabel teal">¿Qué mide este indicador?</div>
+          <div class="ibtext">El volumen de búsqueda refleja la demanda espontánea: cuánta gente busca la marca de forma proactiva. Es el indicador más limpio de notoriedad porque no depende de inversión publicitaria.</div>
+        </div>
+        <div class="ib orange">
+          <div class="iblabel orange">Tendencia estructural vs estacional</div>
+          <div class="ibtext">El pico histórico fue <strong>abril 2023 (índice 100)</strong> y desde entonces la tendencia general es descendente. El verano 2026 marca el <strong>nivel más bajo de los últimos dos años</strong> en este indicador.</div>
+        </div>
+        <div class="ib red">
+          <div class="iblabel red">Impacto en el embudo</div>
+          <div class="ibtext">No es un dato aislado: la caída de demanda espontánea encaja y explica la caída del ROAS y del ticket medio que estamos viendo en la tienda. Es el indicador raíz que hay que revertir para que el resto de métricas se recuperen sostenidamente.</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="cw" style="flex:1">
+          <div class="ct2t" style="display:flex;justify-content:space-between">
+            <span>Índice de búsquedas YoY (Jul/Ago)</span>
+            <span style="color:var(--red)">-22% YoY</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;margin-top:10px">
+            <div style="background:#f7f8fa;border:1px solid #e2e8f0;padding:12px;border-radius:6px;text-align:center">
+              <div style="font-size:9px;color:var(--ink4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Jul/Ago 2025</div>
+              <div style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--ink2)">49 / 53</div>
+              <div style="font-size:10px;color:var(--ink4);margin-top:2px">media 51</div>
+            </div>
+            <div style="background:#fff5f5;border:1px solid #feb2b2;padding:12px;border-radius:6px;text-align:center">
+              <div style="font-size:9px;color:var(--red);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Jul/Ago 2026</div>
+              <div style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--red)">39 / 42</div>
+              <div style="font-size:10px;color:var(--red);margin-top:2px;font-weight:600">media 40</div>
+            </div>
+          </div>
+          <div class="cwrap" style="height:170px"><canvas id="cTrendsMain"></canvas></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sfooter"><div class="sfnote">Fuente: Google Trends, España, septiembre 2021 a septiembre 2026. Escala 0 a 100 relativa al máximo histórico (abril 2023 = 100).</div><div class="sfnum">07 / 08</div></div>
+</div>
+
+<!-- S8 CONCLUSIONES -->
+<div class="slide" id="s8">
+  <div class="sh"><div class="sdot"></div><div class="stitle">7. Conclusiones <em>Balance del verano 2026</em></div></div>
+  <div class="srule"></div>
+  <div class="sbody">
+    <div class="verdict">
+      <div class="verdict-pill">Balance del verano</div>
+      <div class="verdict-txt">El verano confirma la estacionalidad del sector. La anomal&iacute;a real fue el <strong style="color:#fff">pico de devoluciones en julio (41%)</strong>, no la ca&iacute;da de ventas en s&iacute; misma. Agosto normaliza las devoluciones (22%) y el tr&aacute;fico sigue decreciendo de forma natural. <strong style="color:#fff">Septiembre es el indicador definitivo: si el TM vuelve a 130+ &euro; y el ROAS supera 4x, el comportamiento del verano fue puramente estacional.</strong></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1">
+      <div class="col">
+        <div style="font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--green);background:#f0fff4;border-radius:6px;padding:5px 10px;margin-bottom:4px">Lo que ha aguantado bien</div>
+        <div class="ib green">
+          <div class="iblabel green">Email / Connectif: 1,57 &euro;/ses.</div>
+          <div class="ibtext">El canal de mayor retorno con el menor coste marginal. Consistente durante todo el verano. Potenciar frecuencia y segmentaci&oacute;n es la palanca m&aacute;s eficiente disponible.</div>
+        </div>
+        <div class="ib green">
+          <div class="iblabel green">Google (CPC + PMax): estabilidad</div>
+          <div class="ibtext">22.933 sesiones en julio vs 20.231 en agosto. Ca&iacute;da contenida del 12%. La optimizaci&oacute;n del a&ntilde;o mantiene eficiencia incluso en temporada baja.</div>
+        </div>
+        <div class="ib green">
+          <div class="iblabel green">Devoluciones agosto: normalizadas</div>
+          <div class="ibtext">De 40,9% en julio a 22,2% en agosto. La pol&iacute;tica de rebajas genera devoluciones; fuera de ese per&iacute;odo el comportamiento de compra mejora claramente.</div>
+        </div>
+        <div class="ib green">
+          <div class="iblabel green">Directo: cliente fiel presente</div>
+          <div class="ibtext">A pesar de la ca&iacute;da de ingresos en agosto (vacacional), el canal Directo subi&oacute; un 19% en sesiones. La base de clientes recurrentes est&aacute; activa.</div>
+        </div>
+      </div>
+      <div class="col">
+        <div style="font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);background:#fffaf0;border-radius:6px;padding:5px 10px;margin-bottom:4px">Se&ntilde;ales de atenci&oacute;n</div>
+        <div class="ib orange">
+          <div class="iblabel orange">ROAS: de 5,76x a 2,89x en 3 meses</div>
+          <div class="ibtext">La ca&iacute;da del ROAS desde junio hasta agosto es la tendencia m&aacute;s preocupante. Cada euro invertido en publicidad genera menos de la mitad que en junio.</div>
+        </div>
+        <div class="ib orange">
+          <div class="iblabel orange">CPA: de 20 &euro; a 30 &euro; en agosto</div>
+          <div class="ibtext">Cada conversi&oacute;n cuesta un 47% m&aacute;s que en junio. El coste de adquisici&oacute;n debe volver a niveles de junio (~21 &euro;) al recuperar el tr&aacute;fico de intenci&oacute;n.</div>
+        </div>
+        <div class="ib orange">
+          <div class="iblabel orange">Social org&aacute;nico: base estructural baja</div>
+          <div class="ibtext">Sin el impulso de rebajas, el org&aacute;nico social es 1.855 ses./mes. Sin contenido de formato nativo y consistente, esa cifra no mejorar&aacute; sola.</div>
+        </div>
+        <div class="ib orange">
+          <div class="iblabel orange">Ticket Medio: tendencia bajista</div>
+          <div class="ibtext">De 144 &euro; en mayo a 87 &euro; en agosto. Parte es rebajas, pero la tendencia previa al verano ya era descendente. Recuperar 130+ &euro; en septiembre es el objetivo clave.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sfooter"><div class="sfnote">Datos: Shopify Analytics (enero&ndash;agosto 2026) + GA4 + Meta Business Suite. Todos los datos son reales, sin estimaciones.</div><div class="sfnum">08 / 08</div></div>
+</div>
+
+</div>
+<div class="keyhint">
+  <span><span class="key">&larr;</span><span class="key">&rarr;</span> Navegar</span>
+  <span><span class="key">1</span>&ndash;<span class="key">7</span> Slide directo</span>
+</div>
+
+<script>
+Chart.defaults.font.family = "'DM Sans',sans-serif";
+Chart.defaults.color = '#718096';
+Chart.defaults.animation = false;
+
+var MESES = ['Mayo','Junio','Julio','Agosto'];
+var COLS4 = ['rgba(8,145,178,.85)','rgba(107,70,193,.85)','rgba(39,103,73,.85)','rgba(229,62,62,.85)'];
+
+// â”€â”€ S3: curvas del aÃ±o â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function iS3() {
+  var el1 = document.getElementById('cVentasInv');
+  if (el1) {
+    new Chart(el1, {
+      type: 'bar',
+      data: { labels: MESES, datasets: [
+        { label: 'Ventas netas', data: [108882,104195,61512,35156], backgroundColor: COLS4, borderRadius:5, yAxisID:'y' },
+        { label: 'Inversi\u00f3n', data: [21604,18089,15676,12184], type:'line', borderColor:'#94a3b8', pointBackgroundColor:'#94a3b8', fill:false, tension:.3, pointRadius:5, yAxisID:'y', borderWidth:2, borderDash:[4,3] }
+      ]},
+      options:{ responsive:true, maintainAspectRatio:false,
+        plugins:{ legend:{position:'top',labels:{font:{size:9},boxWidth:10}}, tooltip:{callbacks:{label:function(c){return c.dataset.label+': '+c.raw.toLocaleString('es')+' \u20ac';}}} },
+        scales:{ y:{grid:{color:'#f0f4f8'},ticks:{font:{size:9},callback:function(v){return (v/1000).toFixed(0)+'k';}}}, x:{grid:{display:false},ticks:{font:{size:10}}} }
+      }
+    });
+  }
+  var el2 = document.getElementById('cSessTrans');
+  if (el2) {
+    new Chart(el2, {
+      type:'bar',
+      data:{ labels:MESES, datasets:[
+        { label:'Sesiones', data:[98484,77707,65384,57553], backgroundColor:COLS4, borderRadius:5, yAxisID:'y' },
+        { label:'Transacciones', data:[754,872,665,401], type:'line', borderColor:'#e91e8c', pointBackgroundColor:'#e91e8c', fill:false, tension:.3, pointRadius:5, yAxisID:'y2', borderWidth:2 }
+      ]},
+      options:{ responsive:true, maintainAspectRatio:false,
+        plugins:{ legend:{position:'top',labels:{font:{size:9},boxWidth:10}} },
+        scales:{ y:{grid:{color:'#f0f4f8'},ticks:{font:{size:9},callback:function(v){return (v/1000).toFixed(0)+'k';}},position:'left'}, y2:{position:'right',grid:{display:false},ticks:{font:{size:9}}}, x:{grid:{display:false},ticks:{font:{size:10}}} }
+      }
+    });
+  }
+  function miniLine(id, data, min, max, cb, colors) {
+    var el = document.getElementById(id); if (!el) return;
+    new Chart(el, {
+      type:'line',
+      data:{ labels:MESES, datasets:[{ data:data, borderColor:'#0891b2', backgroundColor:'rgba(8,145,178,.07)', fill:true, tension:.35, pointRadius:5, pointBackgroundColor: colors || COLS4, borderWidth:2.5 }] },
+      options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{callbacks:{label:function(c){return cb(c.raw);}}} }, scales:{ x:{grid:{display:false},ticks:{font:{size:10}}}, y:{grid:{color:'#f0f4f8'},min:min,max:max,ticks:{font:{size:8.5},callback:cb}} } }
+    });
+  }
+  miniLine('cTM', [144.40,119.49,92.50,87.67], 70, 160, function(v){return v.toFixed(0)+'\u20ac';});
+  miniLine('cROAS', [5.04,5.76,3.92,2.89], 0, 7, function(v){return v.toFixed(1)+'x';});
+  miniLine('cCVR', [0.77,1.12,1.02,0.70], 0, 1.5, function(v){return v.toFixed(2)+'%';});
+  // Devoluciones bar chart
+  var elD = document.getElementById('cDev');
+  if (elD) {
+    new Chart(elD, {
+      type:'bar',
+      data:{ labels:MESES, datasets:[{ data:[29.5,27.1,40.9,22.2], backgroundColor:['rgba(8,145,178,.7)','rgba(107,70,193,.7)','rgba(229,62,62,.9)','rgba(39,103,73,.7)'], borderRadius:4 }] },
+      options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{callbacks:{label:function(c){return c.raw.toFixed(1)+'%';}}} }, scales:{ x:{grid:{display:false},ticks:{font:{size:10}}}, y:{grid:{color:'#f0f4f8'},min:0,max:50,ticks:{font:{size:8.5},callback:function(v){return v+'%';}}} } }
+    });
+  }
+}
+
+// â”€â”€ S4: trÃ¡fico por canal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function iS4() {
+  var el = document.getElementById('cCanalSess'); if (!el) return;
+  // Google CPC + Cross-network fusionados
+  var labels = ['Google (CPC+PMax)','Directo','B\u00fasq. Org\u00e1nica','Paid Social','Social Org\u00e1nico','Email','AI Assistant'];
+  var jul    = [22933, 10218, 8374, 7481, 10754, 2708, 202];
+  var ago    = [20231, 12139, 6979, 12679, 1855, 2796, 286];
+  new Chart(el, {
+    type:'bar',
+    data:{ labels:labels, datasets:[
+      { label:'Julio', data:jul, backgroundColor:'rgba(39,103,73,.75)', borderRadius:4 },
+      { label:'Agosto', data:ago, backgroundColor:'rgba(229,62,62,.75)', borderRadius:4 }
+    ]},
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{position:'top',labels:{font:{size:9},boxWidth:10}}, tooltip:{callbacks:{label:function(c){return c.dataset.label+': '+c.raw.toLocaleString('es')+' ses.';}}} },
+      scales:{ x:{grid:{display:false},ticks:{font:{size:9}}}, y:{grid:{color:'#f0f4f8'},ticks:{font:{size:8.5},callback:function(v){return v>=1000?(v/1000).toFixed(0)+'k':v;}}} }
+    }
+  });
+}
+
+// â”€â”€ S5: ingresos por canal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function iS5() {
+  var el = document.getElementById('cCanalRev'); if (!el) return;
+  // Google CPC + Cross-network fusionados, ordenados por julio desc
+  var labels = ['Google (CPC+PMax)','Directo','Email','B\u00fasq. Org\u00e1nica','Social Org\u00e1nico','Paid Social'];
+  var jul    = [15998, 11982, 4259, 5228, 2309, 1843];
+  var ago    = [10888, 4181, 2865, 2805,  955, 2765];
+  new Chart(el, {
+    type:'bar',
+    data:{ labels:labels, datasets:[
+      { label:'Julio', data:jul, backgroundColor:'rgba(39,103,73,.75)', borderRadius:4 },
+      { label:'Agosto', data:ago, backgroundColor:'rgba(229,62,62,.75)', borderRadius:4 }
+    ]},
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{position:'top',labels:{font:{size:9},boxWidth:10}}, tooltip:{callbacks:{label:function(c){return c.dataset.label+': '+c.raw.toLocaleString('es')+' \u20ac';}}} },
+      scales:{ x:{grid:{display:false},ticks:{font:{size:9}}}, y:{grid:{color:'#f0f4f8'},ticks:{font:{size:8.5},callback:function(v){return (v/1000).toFixed(0)+'k';}}} }
+    }
+  });
+}
+
+// â”€â”€ S6: META grÃ¡ficos semanales â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Datos calculados de los CSV diarios, agrupados por semana (S1=d1-7, S2=d8-14, S3=d15-21, S4=d22-fin)
+function iS6() {
+  var semanas = ['Semana 1','Semana 2','Semana 3','Semana 4'];
+
+  // IG Alcance: totales semanales reales desde los CSVs
+  var alcJul = [170265, 180887, 201522, 220657]; // S1-S4 Julio (S4 = 10 dÃ­as, 22-31)
+  var alcAgo = [134451, 142841, 136370, 157439]; // S1-S4 Agosto (S4 = 10 dÃ­as, 22-31)
+
+  var elA = document.getElementById('cIGAlcance');
+  if (elA) {
+    new Chart(elA, {
+      type:'line',
+      data:{ labels:semanas, datasets:[
+        { label:'Julio', data:alcJul, borderColor:'#276749', backgroundColor:'rgba(39,103,73,.08)', fill:true, tension:.35, pointRadius:5, pointBackgroundColor:'#276749', borderWidth:2.5 },
+        { label:'Agosto', data:alcAgo, borderColor:'#e53e3e', backgroundColor:'rgba(229,62,62,.06)', fill:true, tension:.35, pointRadius:5, pointBackgroundColor:'#e53e3e', borderWidth:2.5, borderDash:[5,3] }
+      ]},
+      options:{ responsive:true, maintainAspectRatio:false,
+        plugins:{ legend:{position:'top',labels:{font:{size:9},boxWidth:10}}, tooltip:{callbacks:{label:function(c){return c.dataset.label+': '+c.raw.toLocaleString('es');}}} },
+        scales:{ x:{grid:{display:false},ticks:{font:{size:10}}}, y:{grid:{color:'#f0f4f8'},ticks:{font:{size:8.5},callback:function(v){return (v/1000).toFixed(0)+'k';}}} }
+      }
+    });
+  }
+
+  // IG Clics: totales semanales reales desde los CSVs
+  var clicJul = [3783, 4562, 4410, 5377]; // S1-S4 Julio
+  var clicAgo = [3704, 3441, 3077, 4077]; // S1-S4 Agosto
+
+  var elC = document.getElementById('cIGClics');
+  if (elC) {
+    new Chart(elC, {
+      type:'line',
+      data:{ labels:semanas, datasets:[
+        { label:'Julio', data:clicJul, borderColor:'#0891b2', backgroundColor:'rgba(8,145,178,.08)', fill:true, tension:.35, pointRadius:5, pointBackgroundColor:'#0891b2', borderWidth:2.5 },
+        { label:'Agosto', data:clicAgo, borderColor:'#e53e3e', backgroundColor:'rgba(229,62,62,.06)', fill:true, tension:.35, pointRadius:5, pointBackgroundColor:'#e53e3e', borderWidth:2.5, borderDash:[5,3] }
+      ]},
+      options:{ responsive:true, maintainAspectRatio:false,
+        plugins:{ legend:{position:'top',labels:{font:{size:9},boxWidth:10}}, tooltip:{callbacks:{label:function(c){return c.dataset.label+': '+c.raw.toLocaleString('es')+' clics';}}} },
+        scales:{ x:{grid:{display:false},ticks:{font:{size:10}}}, y:{grid:{color:'#f0f4f8'},ticks:{font:{size:8.5}}} }
+      }
+    });
+  }
+}
+
+function iS7() {
+  var trendLabels = [
+    '09/21','10/21','11/21','12/21',
+    '01/22','02/22','03/22','04/22','05/22','06/22','07/22','08/22','09/22','10/22','11/22','12/22',
+    '01/23','02/23','03/23','04/23','05/23','06/23','07/23','08/23','09/23','10/23','11/23','12/23',
+    '01/24','02/24','03/24','04/24','05/24','06/24','07/24','08/24','09/24','10/24','11/24','12/24',
+    '01/25','02/25','03/25','04/25','05/25','06/25','07/25','08/25','09/25','10/25','11/25','12/25',
+    '01/26','02/26','03/26','04/26','05/26','06/26','07/26','08/26','09/26'
+  ];
+  var trendData = [
+    22,24,32,25,
+    34,35,62,77,80,71,59,51,45,42,66,67,
+    71,43,66,100,78,70,54,47,51,54,70,76,
+    88,54,62,83,66,52,50,41,54,43,55,74,
+    68,44,56,72,65,56,49,53,57,46,63,67,
+    64,39,42,67,54,50,39,42,36
+  ];
+  var bgColors = trendData.map(function(v, i) { return i >= 53 ? 'rgba(8,145,178,.9)' : 'rgba(113,128,150,.45)'; });
+  var borderColors = trendData.map(function(v, i) { return i >= 53 ? 'rgba(8,145,178,1)' : 'rgba(113,128,150,.6)'; });
+
+  var ctx = document.getElementById('cTrendsMain');
+  if (ctx) {
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: trendLabels,
+        datasets: [{ data: trendData, backgroundColor: bgColors, borderColor: borderColors, borderWidth: 1, borderRadius: 2 }]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(c) { return 'Índice: ' + c.raw + ' / 100'; } } } },
+        scales: {
+          x: { grid: { display: false }, ticks: { font: { size: 7.5 }, maxRotation: 45, autoSkip: true, maxTicksLimit: 20 } },
+          y: { grid: { color: '#f0f4f8' }, min: 0, max: 100, ticks: { font: { size: 8.5 }, stepSize: 25 } }
+        }
+      }
+    });
+  }
+}
+
+// ── SLIDE CONTROLLER ──————————————————————————————————————————————————————————————
+var TOTAL = 8;
+var initFns = { 3:iS3, 4:iS4, 5:iS5, 6:iS6, 7:iS7 };
+var cur = 1;
+var done = {1:true};
+
+function go(n) {
+  if (n<1||n>TOTAL) return;
+  document.getElementById('s'+cur).classList.remove('on');
+  cur = n;
+  document.getElementById('s'+cur).classList.add('on');
+  document.getElementById('ctr').textContent = cur+' / '+TOTAL;
+  document.querySelectorAll('.ndot').forEach(function(d,i){ d.classList.toggle('on', i===cur-1); });
+  window.scrollTo(0,0);
+  if (initFns[cur]&&!done[cur]) { setTimeout(function(){ initFns[cur](); done[cur]=true; }, 60); }
+}
+
+// Force init all charts for print mode
+window.addEventListener('beforeprint', function() {
+  for(var k in initFns) { if(!done[k]) { initFns[k](); done[k]=true; } }
+});
+
+var de = document.getElementById('dots');
+for (var i=1; i<=TOTAL; i++) {
+  (function(idx){
+    var d = document.createElement('div');
+    d.className = 'ndot'+(idx===1?' on':'');
+    d.onclick = function(){ go(idx); };
+    de.appendChild(d);
+  })(i);
+}
+document.addEventListener('keydown', function(e){
+  if (e.key==='ArrowRight'||e.key==='ArrowDown') go(cur+1);
+  else if (e.key==='ArrowLeft'||e.key==='ArrowUp') go(cur-1);
+  else if (e.key>='1'&&e.key<='9') go(+e.key);
+});
+</script>
+</body>
+</html>
+
